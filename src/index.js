@@ -1,24 +1,24 @@
 
 const init = () => {
-    const inputForm = document.querySelector('form')
+    const form = document.querySelector('form')
   
-    inputForm.addEventListener('submit', (event) => {
+   form.addEventListener('submit', (event) => {
       event.preventDefault();
 
-      const input = document.querySelector('input#searchByID');//instead of event.target.children[1].value
-        console.log(input.value)
-      fetch(`http://localhost:3000/movies/${input.value}`)
+      // const input =  form.searchByID.value;
+      const id = document.querySelector('input#searchByID')//instead of event.target.children[1].value
+      //console.log(id)-confirmed
+      fetch(`http://localhost:3000/movies/${id.value}`)
       .then(response => response.json())
-      .then(data => { console.log(data)
-        let title = document.querySelector('section#movieDetails h4')
-        let summary = document.querySelector('section#movieDetails p')
+      .then(id => { console.log(id)
+        const title = document.querySelector('section#movieDetails h4')
+        const summary = document.querySelector('section#movieDetails p')
     
-         title.innerText = data.title
-         summary.innerText = data.summary
+         title.innerText = id.title
+         summary.innerText = id.summary
    
       })
       
-    });
-  }
+    })}
 
   document.addEventListener('DOMContentLoaded', init)
